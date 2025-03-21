@@ -12,6 +12,8 @@ from huaweicloudsdkevs.v2.region.evs_region import EvsRegion
 from huaweicloudsdkvpc.v2 import *
 from huaweicloudsdktms.v1 import *
 from huaweicloudsdktms.v1.region.tms_region import TmsRegion
+from huaweicloudsdkdeh.v1 import *
+from huaweicloudsdkdeh.v1.region.deh_region import DeHRegion
 
 log = logging.getLogger('custodian.huaweicloud.client')
 
@@ -58,6 +60,11 @@ class Session:
                 .with_credentials(globalCredentials) \
                 .with_region(TmsRegion.value_of(self.region)) \
                 .build()
+        elif service == 'deh':
+            client = DeHClient.new_builder() \
+                .with_credentials(credentials) \
+                .with_region(DeHRegion.value_of(self.region)) \
+                .build()
 
         return client
 
@@ -66,5 +73,8 @@ class Session:
             request = ListVpcsRequest()
         elif service == 'evs':
             request = ListVolumesRequest()
+        elif service == 'deh':
+            request = ListDedicatedHostsRequest()
+
 
         return request
