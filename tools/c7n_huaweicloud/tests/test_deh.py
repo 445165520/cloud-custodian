@@ -1,10 +1,5 @@
 # Copyright The Cloud Custodian Authors.
 # SPDX-License-Identifier: Apache-2.0
-import time
-
-from boto3 import client
-from huaweicloudsdkdeh.v1 import ShowDedicatedHostRequest
-
 from huaweicloud_common import BaseTest
 
 
