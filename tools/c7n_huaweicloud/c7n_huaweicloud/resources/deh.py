@@ -3,7 +3,6 @@
 
 import logging
 
-from huaweicloudsdkcore.exceptions import exceptions
 from huaweicloudsdkdeh.v1 import *
 
 from c7n.utils import type_schema
@@ -21,6 +20,7 @@ class Deh(QueryResourceManager):
         enum_spec = ("list_dedicated_hosts", 'dedicated_hosts', 'offset')
         id = 'dedicated_host_id'
         tag = True
+        tag_resource_type = 'dedicated-host-tags'
 
 
 @Deh.action_registry.register("update-dedicated-host")
